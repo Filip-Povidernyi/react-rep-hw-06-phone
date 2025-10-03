@@ -4,7 +4,7 @@ import Input from "components/Input/Input";
 import Button from "components/Button/Button";
 import { addContact } from "../../redux/contactsSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { getContacts } from "../../redux/selectors";
+import { selectContacts } from "../../redux/selectors";
 
 
 const Form = () => {
@@ -12,7 +12,7 @@ const Form = () => {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     const dispatch = useDispatch();
-    const contacts = useSelector(getContacts)
+    const contacts = useSelector(selectContacts)
     
     const handlerChange = (evt) => {
         const { name, value } = evt.target;

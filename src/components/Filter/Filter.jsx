@@ -2,7 +2,7 @@ import React from "react";
 import Input from "components/Input/Input";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilter } from "../../redux/filterSlice";
-import { getFilter } from "../../redux/selectors";
+import { selectFilter } from "../../redux/selectors";
 
 
 const Filter = () => {
@@ -11,7 +11,7 @@ const Filter = () => {
     const handlerChange = (evt) => {
         dispatch(setFilter(evt.target.value));
     };
-    const filter = useSelector(getFilter);
+    const filter = useSelector(selectFilter);
 
     return (
         <>

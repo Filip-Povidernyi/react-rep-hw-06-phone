@@ -2,15 +2,14 @@ import React from "react";
 import Button from "components/Button/Button";
 import css from "../App/style.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getContacts, getFilter } from "../../redux/selectors";
+import { selectFilteredContacts } from "../../redux/selectors";
 import { deleteContact } from "../../redux/contactsSlice";
 
 
 const ContactsList = () => {
 
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
   const dispatch = useDispatch();
+  const filteredContacts = useSelector(selectFilteredContacts);
 
   const capitalize = (contact) => {
     let newName = contact.split(' ').map(word => (
@@ -23,8 +22,6 @@ const ContactsList = () => {
   const handlerClick = (evt) => {
     dispatch(deleteContact(evt.target.name));
   };
-
-  const filteredContacts = contacts.filter(contact => contact.name.toLocaleLowerCase().includes(filter.toLowerCase()));
 
   return (
     <ul className={css.list}>
